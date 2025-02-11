@@ -1,0 +1,17 @@
+cookie:
+  expiry_days: 30
+  key: ailab # Must be a string
+  name: futbolin
+credentials:
+  usernames:
+    ailab:
+      email: ainaluis02@gmail.com
+      failed_login_attempts: 0 # Will be managed automatically
+      first_name: ailab
+      last_name: hp
+      logged_in: False # Will be managed automatically
+      password: ailab # Will be hashed automatically
+      roles: # Optional
+      - admin
+      - editor
+      - viewer
