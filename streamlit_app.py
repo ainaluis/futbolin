@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import os
-import streamlit_authenticator as stauth
 
 def add_new_game(df1, df2):
     mode = st.selectbox("Choose a game mode:", ["", "2 vs 2", "1 vs 1"])
