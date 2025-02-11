@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import os
-from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
 def add_new_game(df1, df2):
