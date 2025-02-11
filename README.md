@@ -1,4 +1,6 @@
-# 🎈 Futbolín League Hub ⚽🏆
+# Futbolín League Hub ⚽🏆
+
+## AI Lab Barcelona - HP
 
  Track all the thrilling matches, results and rankings from the AI Lab’s Futbolín league at HP Barcelona. 
  
