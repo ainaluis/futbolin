@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import os
-import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
@@ -139,30 +138,7 @@ with tabs[0]:
     st.dataframe(df1)
 
 with tabs[1]:
-    with open('./config.yaml') as file:
-        config = yaml.load(file, Loader=SafeLoader)
-
-    authenticator = stauth.Authenticate(
-        config['credentials'],
-        config['cookie']['name'],
-        config['cookie']['key'],
-        config['cookie']['expiry_days']
-    )
-
-    try:
-        authenticator.login()
-    except Exception as e:
-        st.error(e)
-
-    if st.session_state['authentication_status']:
-        authenticator.logout()
-        add_new_game(df1, df2)
-    elif st.session_state['authentication_status'] is False:
-        st.error('Username/password is incorrect')
-    elif st.session_state['authentication_status'] is None:
-        st.warning('Please enter your username and password')
-
-
+    add_new_game(df1, df2)
 
 with tabs[2]:
     st.write("Coming soon...")
