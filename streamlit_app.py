@@ -23,7 +23,12 @@ def push_to_github(csv_path):
     commit_message = f"Update football scores - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
     repo.index.commit(commit_message)
 
-    origin.push()
+    try:
+        origin.push()
+        print("CSV file pushed to GitHub successfully.")
+    except git.exc.GitCommandError as push_error:
+        print(f"Error while pushing changes: {push_error}")
+        print(push_error.stderr)
     
 def add_new_game(df1, df2):
     mode = st.selectbox("Choose a game mode:", ["", "2 vs 2", "1 vs 1"])
