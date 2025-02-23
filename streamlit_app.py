@@ -75,7 +75,7 @@ def add_new_game(df1, df2):
                 df = pd.concat([df2, new_game], ignore_index=True)
 
                 df.to_csv(csv_file_2, index=False)
-                push_to_github(csv_file_2)
+                # push_to_github(csv_file_2)
                 st.success("Match recorded correctly")
             else:
                 st.error("Please, fill all the fields.")
@@ -109,7 +109,7 @@ def add_new_game(df1, df2):
             df = pd.concat([df1, new_game], ignore_index=True)
 
             df.to_csv(csv_file_1, index=False)
-            push_to_github(csv_file_1)
+            # push_to_github(csv_file_1)
             st.success("Match recorded correctly")
         
 
