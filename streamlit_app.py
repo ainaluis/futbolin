@@ -13,6 +13,10 @@ def push_to_github(csv_path):
         git.Repo.clone_from(repo_url, clone_path)
     
     repo = git.Repo(clone_path)
+
+    repo.config_writer().set_value('user', 'name', 'Aina Luis')
+    repo.config_writer().set_value('user', 'email', 'ainaluis02@gmail.com")
+                                   
     origin = repo.remotes.origin
     origin.pull('main')
 
