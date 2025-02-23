@@ -2,6 +2,23 @@ import pandas as pd
 import streamlit as st
 import os
 
+def push_to_github(csv_path):
+    repo_path = "/Users/ainaluis/Desktop/league/futbolin_league"
+    repo = git.Repo(repo_path)
+
+    origin = repo.remotes.origin
+    origin.set_url('https://github.com/ainaluis/futbolin.git')
+    origin.pull()
+
+    repo_csv_path = os.path.join(repo_path, csv_path)
+
+    repo.index.add([repo_csv_path])
+
+    commit_message = f"Update football scores - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    repo.index.commit(commit_message)
+
+    origin.push()
+    
 def add_new_game(df1, df2):
     mode = st.selectbox("Choose a game mode:", ["", "2 vs 2", "1 vs 1"])
     players = ["Jordina", "Lorenzo", "Iker", "Roman", "Berta", "Aina"]
@@ -38,6 +55,7 @@ def add_new_game(df1, df2):
                 df = pd.concat([df2, new_game], ignore_index=True)
 
                 df.to_csv(csv_file_2, index=False)
+                push_to_github(csv_file_2)
                 st.success("Match recorded correctly")
             else:
                 st.error("Please, fill all the fields.")
@@ -71,6 +89,7 @@ def add_new_game(df1, df2):
             df = pd.concat([df1, new_game], ignore_index=True)
 
             df.to_csv(csv_file_1, index=False)
+            push_to_github(csv_file_1)
             st.success("Match recorded correctly")
         
 
