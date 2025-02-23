@@ -6,12 +6,15 @@ from datetime import datetime
 
 
 def push_to_github(csv_path):
-    repo_path = "/Users/ainaluis/Desktop/league/futbolin_league"
-    repo = git.Repo(repo_path)
+    repo_url = "https://github.com/ainaluis/futbolin.git"
+    clone_path = "/tmp/futbolin_repo" 
 
+    if not os.path.exists(clone_path):
+        git.Repo.clone_from(repo_url, clone_path)
+    
+    repo = git.Repo(clone_path)
     origin = repo.remotes.origin
-    origin.set_url('https://github.com/ainaluis/futbolin.git')
-    origin.pull()
+    origin.pull('main')
 
     repo_csv_path = os.path.join(repo_path, csv_path)
 
