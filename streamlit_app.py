@@ -16,7 +16,7 @@ def push_to_github(csv_path):
     origin = repo.remotes.origin
     origin.pull('main')
 
-    repo_csv_path = os.path.join(repo_url, csv_path)
+    repo_csv_path = os.path.join(clone_path, csv_path)
 
     repo.index.add([repo_csv_path])
 
