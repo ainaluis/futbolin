@@ -16,6 +16,11 @@ def push_to_github(csv_path):
 
     repo.config_writer().set_value('user', 'name', 'Aina Luis')
     repo.config_writer().set_value('user', 'email', 'ainaluis02@gmail.com')
+
+    config_lock_path = os.path.join(clone_path, '.git', 'config.lock')
+    if os.path.exists(config_lock_path):
+        print("Found a lock file, removing it...")
+        os.remove(config_lock_path)
                                    
     origin = repo.remotes.origin
     origin.pull('main')
